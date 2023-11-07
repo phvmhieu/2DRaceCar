@@ -38,7 +38,7 @@ public class CarHandler implements KeyListener{
             System.out.println("x,y \t" + x + "," + y);
             int width = g.fr.getWidth();
             int carWidth = g.carPanel.getWidth();
-            if(x + g.speed <= width - carWidth){
+            if(x + g.speed <= width - carWidth - 140){
                 g.carPanel.setLocation(x + g.speed, y);
             }
         }
@@ -48,8 +48,26 @@ public class CarHandler implements KeyListener{
             int x = g.carPanel.getX();
             int y = g.carPanel.getY();
             System.out.println("x,y \t" + x + "," + y);
-            if(x - g.speed >= 0){
+            if(x - g.speed >= 140){
                 g.carPanel.setLocation(x - g.speed, y);
+            }
+        }else if(code == 87) {
+            //move front
+            System.out.println("front key pressed");
+            int x = g.carPanel.getX();
+            int y = g.carPanel.getY();
+            System.out.println("x,y \t" + x + "," + y);
+            if(y - g.speed >= 0){
+                g.carPanel.setLocation(x, y - g.speed);
+            }
+        }else if(code == 83) {
+            //move back
+            System.out.println("back key pressed");
+            int x = g.carPanel.getX();
+            int y = g.carPanel.getY();
+            System.out.println("x,y \t" + x + "," + y);
+            if(y + g.speed <= 497){
+                g.carPanel.setLocation(x, y + g.speed);
             }
         }
     }
