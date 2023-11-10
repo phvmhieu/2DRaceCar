@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -49,6 +50,38 @@ public class ObstacleThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+        
+    }
+    private static void createObstacleThread(JPanel panel) {
+        Random random = new Random();
+        int y = random.nextInt(panel.getHeight() - 50); // Vị trí ngẫu nhiên trên trục y
+
+        JPanel obstacle = new JPanel();
+        obstacle.setBackground(Color.RED);
+        obstacle.setBounds(0, y, 50, 50);
+
+        panel.add(obstacle);
+
+        Thread obstacleThread = new Thread(() -> {
+            int speed = 2;
+            while (obstacle.getLocation().x < panel.getWidth()) {
+                int x = obstacle.getLocation().x + speed;
+                obstacle.setLocation(x, y);
+                sleep(10); // Dừng 10 milliseconds trước khi di chuyển chướng ngại vật tiếp theo
+            }
+            panel.remove(obstacle);
+            panel.repaint();
+        });
+
+        obstacleThread.start();
+    }
+
+    private static void sleep(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
