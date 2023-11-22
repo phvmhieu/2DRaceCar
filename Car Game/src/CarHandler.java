@@ -101,15 +101,29 @@ public class CarHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_D) {
+        switch(code){
+            case KeyEvent.VK_D:
             isMovingRight = true;
-        } else if (code == KeyEvent.VK_A) {
+            break;
+        case KeyEvent.VK_A:
             isMovingLeft = true;
-        } else if (code == KeyEvent.VK_W) {
+            break;
+        case KeyEvent.VK_W:
             isMovingUp = true;
-        } else if (code == KeyEvent.VK_S) {
+            break;
+        case KeyEvent.VK_S:
             isMovingDown = true;
+            break;
         }
+//        if (code == KeyEvent.VK_D) {
+//            isMovingRight = true;
+//        } else if (code == KeyEvent.VK_A) {
+//            isMovingLeft = true;
+//        } else if (code == KeyEvent.VK_W) {
+//            isMovingUp = true;
+//        } else if (code == KeyEvent.VK_S) {
+//            isMovingDown = true;
+//        }
 
         moveCar();
     }
@@ -117,15 +131,29 @@ public class CarHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_D) {
+        switch (code) {
+        case KeyEvent.VK_D:
             isMovingRight = false;
-        } else if (code == KeyEvent.VK_A) {
+            break;
+        case KeyEvent.VK_A:
             isMovingLeft = false;
-        } else if (code == KeyEvent.VK_W) {
+            break;
+        case KeyEvent.VK_W:
             isMovingUp = false;
-        } else if (code == KeyEvent.VK_S) {
+            break;
+        case KeyEvent.VK_S:
             isMovingDown = false;
-        }
+            break;
+    }
+//        if (code == KeyEvent.VK_D) {
+//            isMovingRight = false;
+//        } else if (code == KeyEvent.VK_A) {
+//            isMovingLeft = false;
+//        } else if (code == KeyEvent.VK_W) {
+//            isMovingUp = false;
+//        } else if (code == KeyEvent.VK_S) {
+//            isMovingDown = false;
+//        }
     }
 
     private void moveCar() {
@@ -167,4 +195,5 @@ public class CarHandler implements KeyListener {
 
         moveThread.start();
     }
+    
 }
